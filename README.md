@@ -2,7 +2,6 @@
 
 **DebugMind** is an AI-powered debugging assistant and architecture visualization tool for Visual Studio Code. It seamlessly integrates into your development workflow to analyze errors, explain their root causes, and recommend precise fixes based on the context of your codebase.
 
-![DebugMind Architecture](resources/icon.svg) *(If you have an icon or screenshot, place it in `resources/`!)*
 
 ## 🚀 Features
 
