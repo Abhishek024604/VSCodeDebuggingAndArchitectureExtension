@@ -1,0 +1,145 @@
+{
+  "name": "debugmind",
+  "displayName": "DebugMind",
+  "publisher": "debugmind",
+  "description": "AI-powered debugging assistant",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abhishek024604/VSCodeDebuggingAndArchitectureExtension.git"
+  },
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "debugmind",
+          "title": "DebugMind",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "debugmind": [
+        {
+          "type": "webview",
+          "id": "debugmind.reportView",
+          "name": "Debug Report"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "debugmind.analyzeSelection",
+        "title": "DebugMind: Analyze Selected Error"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "debugmind.analyzeSelection",
+        "key": "ctrl+alt+d",
+        "mac": "cmd+alt+d"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "debugmind.analyzeSelection",
+          "group": "debugmind"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DebugMind",
+      "properties": {
+        "debugmind.llmProvider": {
+          "type": "string",
+          "enum": [
+            "openrouter",
+            "groq",
+            "local",
+            "openai",
+            "anthropic"
+          ],
+          "default": "groq",
+          "description": "Select the LLM provider to use for analysis"
+        },
+        "debugmind.openrouterApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OpenRouter API Key"
+        },
+        "debugmind.groqApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Groq API Key"
+        },
+        "debugmind.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OpenAI API Key"
+        },
+        "debugmind.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Anthropic API Key"
+        },
+        "debugmind.localEndpoint": {
+          "type": "string",
+          "default": "http://localhost:11434/api/generate",
+          "description": "Local LLM endpoint (e.g., Ollama)"
+        },
+        "debugmind.model": {
+          "type": "string",
+          "default": "llama-3.3-70b-versatile",
+          "description": "The model to use (e.g., llama-3.3-70b-versatile, gpt-4o, claude-3-5-sonnet-20240620)"
+        },
+        "debugmind.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Custom Base URL for OpenAI-compatible APIs (optional)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "build": "npm run package"
+  },
+  "devDependencies": {
+    "@types/dagre": "^0.7.54",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/vscode": "^1.86.0",
+    "css-loader": "^6.10.0",
+    "postcss": "^8.4.35",
+    "postcss-loader": "^8.1.1",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^3.4.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.5.0",
+    "dagre": "^0.8.5",
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^0.344.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "reactflow": "^11.11.4"
+  }
+}
